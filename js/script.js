@@ -2,6 +2,7 @@ const nav = document.getElementById('site-nav')
 const header = document.getElementsByClassName('header')
 const btnToggle = document.getElementById('toggle')
 const clickMenu = document.querySelectorAll('.nav-ti li')
+const menuTi = document.querySelectorAll('.menu-ti li')
 const conteudoTi = document.querySelectorAll('.conteudo-ti-container')
 
 function abreFechaMenu(){
@@ -30,7 +31,15 @@ clickMenu.forEach((e, i)=>{
         conteudoTi.forEach(e=> e.classList.add('oculto'))
         e.classList.toggle('link-ativo')
         conteudoTi[i].classList.toggle('oculto')
-        console.log(i)
+    })
+})
+menuTi.forEach((e, i)=>{
+    e.addEventListener('click', ev=>{
+        clickMenu.forEach(e => e.classList.remove('link-ativo'))
+        conteudoTi.forEach(e=> e.classList.add('oculto'))
+        clickMenu[i].classList.toggle('link-ativo')
+        conteudoTi[i].classList.toggle('oculto')
+        ev.preventDefault()
     })
 })
 
